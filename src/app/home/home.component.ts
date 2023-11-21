@@ -4,6 +4,7 @@ import { ChecklistService } from '../shared/data-access/checklist.service';
 import { Checklist } from '../shared/interfaces/checklist';
 import { FormModalComponent } from '../shared/ui/form-modal/form-modal.component';
 import { ModalComponent } from '../shared/ui/modal/modal.component';
+import { ChecklistListComponent } from './ui/checklist-list/checklist-list.component';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,11 @@ import { ModalComponent } from '../shared/ui/modal/modal.component';
       <h1>Quicklists</h1>
       <button (click)="checklistsBeingEdited.set({})">Add Checklist</button>
     </header>
+
+    <section>
+      <h2>Your checklists</h2>
+      <app-checklist-list [checklists]="checklistService.checklists()" />
+    </section>
 
     <app-modal [IsOpen]="!!checklistsBeingEdited()">
       <ng-template>
@@ -30,7 +36,7 @@ import { ModalComponent } from '../shared/ui/modal/modal.component';
     </app-modal>
   `,
   styles: ``,
-  imports: [ModalComponent, FormModalComponent],
+  imports: [ModalComponent, FormModalComponent, ChecklistListComponent],
 })
 export default class HomeComponent {
   formBuilder = inject(FormBuilder);
