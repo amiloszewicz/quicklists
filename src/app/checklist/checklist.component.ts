@@ -7,7 +7,7 @@ import { ChecklistItem } from '../shared/interfaces/checklist-item';
 import { FormModalComponent } from '../shared/ui/form-modal/form-modal.component';
 import { ModalComponent } from '../shared/ui/modal/modal.component';
 import { ChecklistItemService } from './data-access/checklist-item.service';
-import { ChecklistHeaderComponent } from './ui/checklist-header/checklist-header.component';
+import { ChecklistHeaderComponent } from './ui/checklist-header.component';
 
 @Component({
   selector: 'app-checklist',
