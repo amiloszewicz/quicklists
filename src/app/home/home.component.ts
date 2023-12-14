@@ -4,7 +4,7 @@ import { ChecklistService } from '../shared/data-access/checklist.service';
 import { Checklist } from '../shared/interfaces/checklist';
 import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { ModalComponent } from '../shared/ui/modal.component';
-import { ChecklistListComponent } from './ui/checklist-list/checklist-list.component';
+import { ChecklistListComponent } from './ui/checklist-list.component';
 
 @Component({
   selector: 'app-home',

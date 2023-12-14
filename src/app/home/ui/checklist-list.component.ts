@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Checklist } from '../../../shared/interfaces/checklist';
+import { Checklist } from '../../shared/interfaces/checklist';
 
 @Component({
   selector: 'app-checklist-list',
