@@ -4,8 +4,8 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ChecklistService } from '../shared/data-access/checklist.service';
 import { ChecklistItem } from '../shared/interfaces/checklist-item';
-import { FormModalComponent } from '../shared/ui/form-modal/form-modal.component';
-import { ModalComponent } from '../shared/ui/modal/modal.component';
+import { FormModalComponent } from '../shared/ui/form-modal.component';
+import { ModalComponent } from '../shared/ui/modal.component';
 import { ChecklistItemService } from './data-access/checklist-item.service';
 import { ChecklistHeaderComponent } from './ui/checklist-header.component';
 
