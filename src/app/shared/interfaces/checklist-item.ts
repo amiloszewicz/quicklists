@@ -8,6 +8,7 @@ export interface ChecklistItem {
 }
 
 export type AddChecklistItem = {
+  // item: Omit<ChecklistItem, 'id' | 'checklistId' | 'checked'>;
   item: Pick<ChecklistItem, 'title'>;
   checklistId: RemoveChecklist;
 };
