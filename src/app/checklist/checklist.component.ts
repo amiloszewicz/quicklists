@@ -8,6 +8,7 @@ import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { ModalComponent } from '../shared/ui/modal.component';
 import { ChecklistItemService } from './data-access/checklist-item.service';
 import { ChecklistHeaderComponent } from './ui/checklist-header.component';
+import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
 
 @Component({
   selector: 'app-checklist',
@@ -18,8 +19,11 @@ import { ChecklistHeaderComponent } from './ui/checklist-header.component';
       [checklist]="checklist"
       (addItem)="checklistItemBeingEdited.set({})"
     />
+    <app-checklist-item-list
+      [checklistItems]="items()"
+    ></app-checklist-item-list>
     }
-    <app-modal>
+    <app-modal [IsOpen]="!!checklistItemBeingEdited()">
       <ng-template>
         <app-form-modal
           title="Create Item"
@@ -36,7 +40,12 @@ import { ChecklistHeaderComponent } from './ui/checklist-header.component';
     </app-modal>
   `,
   styles: ``,
-  imports: [ChecklistHeaderComponent, ModalComponent, FormModalComponent],
+  imports: [
+    ChecklistHeaderComponent,
+    ModalComponent,
+    FormModalComponent,
+    ChecklistItemListComponent,
+  ],
 })
 export default class ChecklistComponent {
   checklistService = inject(ChecklistService);
@@ -52,6 +61,12 @@ export default class ChecklistComponent {
     this.checklistService
       .checklists()
       .find((checklist) => checklist.id === this.params()?.get('id'))
+  );
+
+  items = computed(() =>
+    this.checklistItemService
+      .checklistItems()
+      .filter((item) => item.checklistId === this.params()?.get('id'))
   );
 
   checklistItemForm = this.formBuilder.nonNullable.group({
