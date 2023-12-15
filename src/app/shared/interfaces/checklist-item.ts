@@ -18,4 +18,5 @@ export type EditChecklistItem = {
   data: AddChecklistItem['item'];
 };
 
-export type RemoveChecklistItem = Pick<ChecklistItem, 'id'>;
+// export type RemoveChecklistItem = Pick<ChecklistItem, 'id'>;
+export type RemoveChecklistItem = ChecklistItem['id'];
