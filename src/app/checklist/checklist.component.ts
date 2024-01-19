@@ -30,6 +30,7 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
 
     <app-checklist-item-list
       [checklistItems]="items()"
+      (toggle)="checklistItemService.toggle$.next($event)"
     ></app-checklist-item-list>
 
     <app-modal [isOpen]="!!checklistItemBeingEdited()">
