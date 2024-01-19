@@ -33,17 +33,19 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
     ></app-checklist-item-list>
 
     <app-modal [isOpen]="!!checklistItemBeingEdited()">
-      <app-form-modal
-        title="Create item"
-        [formGroup]="checklistItemForm"
-        (save)="
-          checklistItemService.add$.next({
-            item: checklistItemForm.getRawValue(),
-            checklistId: checklist()?.id!
-          })
-        "
-        (close)="checklistItemBeingEdited.set(null)"
-      ></app-form-modal>
+      <ng-template>
+        <app-form-modal
+          title="Create item"
+          [formGroup]="checklistItemForm"
+          (save)="
+            checklistItemService.add$.next({
+              item: checklistItemForm.getRawValue(),
+              checklistId: checklist()?.id!
+            })
+          "
+          (close)="checklistItemBeingEdited.set(null)"
+        ></app-form-modal>
+      </ng-template>
     </app-modal>
   `,
   styles: ``,
