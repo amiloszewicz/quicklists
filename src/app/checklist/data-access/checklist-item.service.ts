@@ -6,6 +6,7 @@ import { RemoveChecklist } from '../../shared/interfaces/checklist';
 import {
   AddChecklistItem,
   ChecklistItem,
+  EditChecklistItem,
   RemoveChecklistItem,
 } from '../../shared/interfaces/checklist-item';
 
@@ -37,6 +38,8 @@ export class ChecklistItemService {
   toggle$ = new Subject<RemoveChecklistItem>();
   reset$ = new Subject<RemoveChecklist>();
   checklistItemsLoaded$ = this.storageService.loadChecklistItems();
+  remove$ = new Subject<RemoveChecklist>();
+  edit$ = new Subject<EditChecklistItem>();
 
   constructor() {
     // reducers
@@ -84,6 +87,24 @@ export class ChecklistItemService {
           loaded: true,
         }))
       );
+
+    this.remove$.pipe(takeUntilDestroyed()).subscribe((checklistItemId) =>
+      this.state.update((state) => ({
+        ...state,
+        checklistItems: state.checklistItems.filter(
+          (item) => item.id !== checklistItemId
+        ),
+      }))
+    );
+
+    this.edit$.pipe(takeUntilDestroyed()).subscribe((update) =>
+      this.state.update((state) => ({
+        ...state,
+        checklistItems: state.checklistItems.map((item) =>
+          item.id === update.id ? { ...item, title: update.data.title } : item
+        ),
+      }))
+    );
 
     // effects
     effect(() => {
