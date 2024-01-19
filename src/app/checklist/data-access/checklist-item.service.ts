@@ -40,6 +40,7 @@ export class ChecklistItemService {
   checklistItemsLoaded$ = this.storageService.loadChecklistItems();
   remove$ = new Subject<RemoveChecklist>();
   edit$ = new Subject<EditChecklistItem>();
+  checklistRemoved$ = new Subject<RemoveChecklist>();
 
   constructor() {
     // reducers
@@ -102,6 +103,15 @@ export class ChecklistItemService {
         ...state,
         checklistItems: state.checklistItems.map((item) =>
           item.id === update.id ? { ...item, title: update.data.title } : item
+        ),
+      }))
+    );
+
+    this.checklistRemoved$.pipe(takeUntilDestroyed()).subscribe((checklistId) =>
+      this.state.update((state) => ({
+        ...state,
+        checklistItems: state.checklistItems.filter(
+          (item) => item.checklistId !== checklistId
         ),
       }))
     );
