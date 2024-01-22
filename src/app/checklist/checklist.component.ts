@@ -28,12 +28,13 @@ import { ChecklistStatusComponent } from './ui/checklist-status.component';
       (addItem)="checklistItemBeingEdited.set({})"
       (resetChecklist)="checklistItemService.reset$.next($event)"
     />
-    }
 
+    } @if (items().length) {
     <app-checklist-status
       [items]="items().length"
       [completeState]="checkedItems().length"
     ></app-checklist-status>
+    }
 
     <app-checklist-item-list
       [checklistItems]="items()"
