@@ -34,7 +34,30 @@ import {
       </ul>
     </section>
   `,
-  styles: ``,
+  styles: `
+   ul {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        font-size: 1.5em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--color-light);
+        list-style-type: none;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+
+        button {
+          margin-left: 1rem;
+        }
+
+        &:hover {
+          background: var(--color-light-hover);
+        }
+      }`,
 })
 export class ChecklistItemListComponent {
   @Input({ required: true }) checklistItems!: ChecklistItem[];

@@ -20,7 +20,6 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
     ChecklistItemListComponent,
   ],
   template: `
-    <h1>Hi</h1>
     @if (checklist(); as checklist) {
     <app-checklist-header
       [checklist]="checklist"
