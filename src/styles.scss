@@ -4,6 +4,7 @@
   --color-secondary: #72e7a1;
   --color-dark: #1c1d3b;
   --color-light: #ffffff;
+  --color-light-hover: #eaf8ed;
 }
 
 html {
@@ -15,6 +16,13 @@ body {
   height: 100%;
   background: var(--color-dark);
   font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+li,
+label {
+  color: #0c1b0c;
 }
 
 header {
@@ -33,7 +41,7 @@ section {
 
 button {
   height: 30px;
-  background-color: #354135;
+  background-color: #1b3b1b;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -58,6 +66,16 @@ button {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+
+  &:hover,
+  :focus {
+    background-color: #1b3b1be3;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #1b3b1b;
 }
 
 .dialog-container {
@@ -67,4 +85,31 @@ button {
   bottom: 0;
   right: 0;
   left: 0;
+
+  form {
+    display: flex;
+    align-items: center;
+
+    div {
+      display: flex;
+    }
+  }
+
+  button {
+    margin-left: 1rem;
+  }
+
+  label {
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-right: 1rem;
+  }
+
+  input {
+    border-radius: 8px;
+    border-style: none;
+    padding: 0.5rem;
+  }
 }
