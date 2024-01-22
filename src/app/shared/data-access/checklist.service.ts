@@ -68,7 +68,7 @@ export class ChecklistService {
     this.edit$.pipe(takeUntilDestroyed()).subscribe((update) =>
       this.state.update((state) => ({
         ...state,
-        checklists: state.checklists.filter((checklist) =>
+        checklists: state.checklists.map((checklist) =>
           checklist.id === update.id
             ? { ...checklist, title: update.data.title }
             : checklist
