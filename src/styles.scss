@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #a2ccae;
+  --color-secondary: #72e7a1;
+  --color-dark: #1c1d3b;
+  --color-light: #ffffff;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--color-dark);
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background: var(--color-light);
+}
+
+section {
+  height: 100%;
+  padding: 2rem;
+  background: var(--color-primary);
+}
+
+button {
+  height: 30px;
+  background-color: #354135;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.dialog-container {
+  position: absolute !important;
+  background: var(--color-dark);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
