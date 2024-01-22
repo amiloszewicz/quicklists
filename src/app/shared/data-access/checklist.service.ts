@@ -4,13 +4,13 @@ import { Subject } from 'rxjs';
 import { ChecklistItemService } from '../../checklist/data-access/checklist-item.service';
 import {
   AddChecklist,
-  Checklist,
+  DetailChecklist,
   EditChecklist,
 } from '../interfaces/checklist';
 import { StorageService } from './storage.service';
 
 export interface ChecklistState {
-  checklists: Checklist[];
+  checklists: DetailChecklist[];
   loaded: boolean;
   error: string | null;
 }
@@ -88,6 +88,7 @@ export class ChecklistService {
     return {
       ...checklist,
       id: this.generateSlug(checklist.title),
+      date: Date.now().toString(),
     };
   }
 
