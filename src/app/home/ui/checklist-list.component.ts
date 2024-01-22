@@ -9,13 +9,15 @@ import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
   template: `
     <ul>
       @for (checklist of checklists; track checklist.id) {
-      <a routerLink="/checklist/{{ checklist.id }}">
-        {{ checklist.title }}
-      </a>
-      <div>
-        <button (click)="edit.emit(checklist)">Edit</button>
-        <button (click)="delete.emit(checklist.id)">Delete</button>
-      </div>
+      <li>
+        <a routerLink="/checklist/{{ checklist.id }}">
+          {{ checklist.title }}
+        </a>
+        <div>
+          <button (click)="edit.emit(checklist)">Edit</button>
+          <button (click)="delete.emit(checklist.id)">Delete</button>
+        </div>
+      </li>
       } @empty {
       <p>Click the add button to create your first checklist!</p>
       }
@@ -30,13 +32,19 @@ import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
         font-size: 1.5em;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         background: var(--color-light);
         list-style-type: none;
         margin-bottom: 1rem;
         padding: 1rem;
+        border-radius: 8px;
 
         button {
           margin-left: 1rem;
+        }
+
+        &:hover {
+          background: var(--color-light-hover);
         }
       }`,
 })
