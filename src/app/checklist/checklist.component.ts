@@ -9,6 +9,7 @@ import { ModalComponent } from '../shared/ui/modal.component';
 import { ChecklistItemService } from './data-access/checklist-item.service';
 import { ChecklistHeaderComponent } from './ui/checklist-header.component';
 import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
+import { ChecklistStatusComponent } from './ui/checklist-status.component';
 
 @Component({
   selector: 'app-checklist',
@@ -18,6 +19,7 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
     ModalComponent,
     FormModalComponent,
     ChecklistItemListComponent,
+    ChecklistStatusComponent,
   ],
   template: `
     @if (checklist(); as checklist) {
@@ -27,6 +29,11 @@ import { ChecklistItemListComponent } from './ui/checklist-item-list.component';
       (resetChecklist)="checklistItemService.reset$.next($event)"
     />
     }
+
+    <app-checklist-status
+      [items]="items().length"
+      [completeState]="checkedItems().length"
+    ></app-checklist-status>
 
     <app-checklist-item-list
       [checklistItems]="items()"
@@ -78,6 +85,10 @@ export default class ChecklistComponent {
     this.checklistItemService
       .checklistItems()
       .filter((item) => item.checklistId === this.params()?.get('id'))
+  );
+
+  checkedItems = computed(() =>
+    this.items().filter((item) => item.checked === true)
   );
 
   checklistItemForm = this.formBuilder.nonNullable.group({
