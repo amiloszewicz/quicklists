@@ -16,7 +16,11 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
         @for (control of formGroup().controls | keyvalue; track control.key) {
         <div>
           <label [for]="control.key">{{ control.key }}</label>
-          <input [id]="control.key" type="text" formControlName="control.key" />
+          <input
+            [id]="control.key"
+            type="text"
+            [formControlName]="control.key"
+          />
         </div>
         }
         <button type="submit">Save</button>
