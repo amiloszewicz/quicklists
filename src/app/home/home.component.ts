@@ -1,5 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ChecklistService } from '../shared/data-access/checklist.service';
 import { FormModalComponent } from '../shared/ui/form-modal.component';
 import { ModalComponent } from '../shared/ui/modal.component';
 import { Checklist } from './../shared/interfaces/checklist';
@@ -24,6 +25,7 @@ import { Checklist } from './../shared/interfaces/checklist';
           "
           [formGroup]="checklistForm"
           (close)="checklistBeingEdited.set(null)"
+          (save)="checklistService.add$.next(checklistForm.getRawValue())"
         />
       </ng-template>
     </app-modal>
@@ -31,6 +33,7 @@ import { Checklist } from './../shared/interfaces/checklist';
   styles: ``,
 })
 export default class HomeComponent {
+  checklistService = inject(ChecklistService);
   formBuilder = inject(FormBuilder);
   checklistBeingEdited = signal<Partial<Checklist> | null>(null);
   checklistForm = this.formBuilder.nonNullable.group({
