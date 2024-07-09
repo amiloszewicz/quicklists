@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Checklist } from '../shared/interfaces/checklist';
-import { ModalComponent } from '../shared/ui/modal/modal.component';
+import { ModalComponent } from '../shared/ui/modal.component';
 
 @Component({
   selector: 'app-home',
