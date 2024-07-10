@@ -13,7 +13,7 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
   template: `
     <header>
       <h1>Quicklists</h1>
-      <button (click)="checklistBeingEdited.set({})">Add checklsit</button>
+      <button (click)="checklistBeingEdited.set({})">Add checklist</button>
     </header>
 
     <section>
