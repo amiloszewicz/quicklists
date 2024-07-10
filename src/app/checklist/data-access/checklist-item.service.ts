@@ -6,6 +6,7 @@ import { RemoveChecklist } from '../../shared/interfaces/checklist';
 import {
   AddChecklistItem,
   ChecklistItem,
+  EditChecklistItem,
   RemoveChecklistItem,
 } from './../../shared/interfaces/checklist-item';
 
@@ -36,6 +37,9 @@ export class ChecklistItemService {
   add$ = new Subject<AddChecklistItem>();
   toggle$ = new Subject<RemoveChecklistItem>();
   reset$ = new Subject<RemoveChecklist>();
+  edit$ = new Subject<EditChecklistItem>();
+  remove$ = new Subject<RemoveChecklistItem>();
+  checklistRemoved$ = new Subject<RemoveChecklist>();
   private checklistItemsLoaded$ = this.storageService.loadChecklistItems();
 
   constructor() {
@@ -82,6 +86,22 @@ export class ChecklistItemService {
       }))
     );
 
+    this.edit$.pipe(takeUntilDestroyed()).subscribe((update) =>
+      this.state.update((state) => ({
+        ...state,
+        checklistItems: state.checklistItems.map((item) =>
+          item.id === update.id ? { ...item, title: update.data.title } : item
+        ),
+      }))
+    );
+
+    this.remove$.pipe(takeUntilDestroyed()).subscribe((id) =>
+      this.state.update((state) => ({
+        ...state,
+        checklistItems: state.checklistItems.filter((item) => item.id !== id),
+      }))
+    );
+
     this.checklistItemsLoaded$.pipe(takeUntilDestroyed()).subscribe({
       next: (checklistItems) =>
         this.state.update((state) => ({
@@ -91,5 +111,14 @@ export class ChecklistItemService {
         })),
       error: (err) => this.state.update((state) => ({ ...state, error: err })),
     });
+
+    this.checklistRemoved$.pipe(takeUntilDestroyed()).subscribe((checklistId) =>
+      this.state.update((state) => ({
+        ...state,
+        checklistItems: state.checklistItems.filter(
+          (item) => item.checklistId !== checklistId
+        ),
+      }))
+    );
   }
 }
