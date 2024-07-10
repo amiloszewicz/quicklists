@@ -16,7 +16,11 @@ import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
       </div>
     </header>
   `,
-  styles: ``,
+  styles: `
+  button {
+        margin-left: 1rem;
+      }
+  `,
 })
 export class ChecklistHeaderComponent {
   checklist = input.required<Checklist>();
