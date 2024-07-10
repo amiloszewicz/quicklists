@@ -23,6 +23,7 @@ header {
   align-items: center;
   padding: 2rem;
   background: var(--color-light);
+  height: 6rem;
 }
 
 section {
@@ -32,7 +33,31 @@ section {
 }
 
 button {
-  height: 30px;
+  height: 40px;
+  font-family: Roboto, sans-serif;
+  font-weight: 0;
+  font-size: 14px;
+  color: #000000;
+  background-color: #abd0f1;
+  padding: 10px 30px;
+  border: solid #ffffff 2px;
+  box-shadow: none;
+  border-radius: 50px;
+  transition: 1000ms;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  transition: 1000ms;
+  padding: 10px 49px;
+  transform: translateY(-0px);
+  background-color: #b3e3a8;
+  color: #000000;
+  border: solid 2px #ffffff;
 }
 
 .dialog-container {

@@ -12,12 +12,12 @@ import { RemoveChecklistItem } from './../../shared/interfaces/checklist-item';
       <ul>
         @for (item of checklistItems(); track item.id) {
         <li>
-          <div>
+          <span>
             @if (item.checked){
             <span>✅</span>
             }
             {{ item.title }}
-          </div>
+          </span>
           <div>
             <button (click)="toggle.emit(item.id)">Toggle</button>
             <button (click)="edit.emit(item)">Edit</button>
@@ -42,6 +42,7 @@ import { RemoveChecklistItem } from './../../shared/interfaces/checklist-item';
         font-size: 1.5em;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         background: var(--color-light);
         list-style-type: none;
         margin-bottom: 1rem;
@@ -49,6 +50,10 @@ import { RemoveChecklistItem } from './../../shared/interfaces/checklist-item';
 
         button {
           margin-left: 1rem;
+        }
+
+        div {
+          display: flex;
         }
       }
   `,

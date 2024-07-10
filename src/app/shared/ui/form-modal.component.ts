@@ -27,7 +27,14 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
       </form>
     </section>
   `,
-  styles: ``,
+  styles: `
+    form {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  `,
 })
 export class FormModalComponent {
   formGroup = input.required<FormGroup>();

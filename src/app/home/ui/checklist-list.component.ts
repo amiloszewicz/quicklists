@@ -26,7 +26,20 @@ import {
       }
     </ul>
   `,
-  styles: ``,
+  styles: `
+  ul {
+    }
+    li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+          display: flex;
+      }
+      }
+  `,
 })
 export class ChecklistListComponent {
   checklists = input.required<Checklist[]>();
