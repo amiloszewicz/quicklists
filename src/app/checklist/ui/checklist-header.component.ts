@@ -8,18 +8,21 @@ import { Checklist, RemoveChecklist } from '../../shared/interfaces/checklist';
   imports: [RouterLink],
   template: `
     <header>
-      <a routerLink="/home">Back</a>
+      <button routerLink="/home" class="btn-black">Back</button>
       <h1>{{ checklist().title }}</h1>
       <div>
-        <button (click)="resetChecklist.emit(checklist().id)">Reset</button>
-        <button (click)="addItem.emit()">Add item</button>
+        <button (click)="resetChecklist.emit(checklist().id)" class="btn-blue">
+          Reset
+        </button>
+        <button (click)="addItem.emit()" class="btn-green">Add item</button>
       </div>
     </header>
   `,
   styles: `
-  button {
-        margin-left: 1rem;
-      }
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
   `,
 })
 export class ChecklistHeaderComponent {

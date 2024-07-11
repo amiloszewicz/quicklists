@@ -17,8 +17,10 @@ import {
           {{ checklist.title }}
         </a>
         <div>
-          <button (click)="edit.emit(checklist)">Edit</button>
-          <button (click)="delete.emit(checklist.id)">Delete</button>
+          <button (click)="edit.emit(checklist)" class="btn-blue">Edit</button>
+          <button (click)="delete.emit(checklist.id)" class="btn-red">
+            Delete
+          </button>
         </div>
       </li>
       } @empty {
@@ -28,17 +30,21 @@ import {
   `,
   styles: `
   ul {
-    }
     li {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        background: var(--color-light);
+        margin-bottom: 1rem;
+        padding: 1rem;
 
         div {
           display: flex;
+          justify-content: space-between;
       }
       }
+    }
   `,
 })
 export class ChecklistListComponent {

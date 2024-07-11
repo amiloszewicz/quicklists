@@ -19,9 +19,13 @@ import { RemoveChecklistItem } from './../../shared/interfaces/checklist-item';
             {{ item.title }}
           </span>
           <div>
-            <button (click)="toggle.emit(item.id)">Toggle</button>
-            <button (click)="edit.emit(item)">Edit</button>
-            <button (click)="delete.emit(item.id)">Delete</button>
+            <button (click)="toggle.emit(item.id)" class="btn-green">
+              Toggle
+            </button>
+            <button (click)="edit.emit(item)" class="btn-blue">Edit</button>
+            <button (click)="delete.emit(item.id)" class="btn-red">
+              Delete
+            </button>
           </div>
         </li>
         } @empty {
@@ -47,14 +51,6 @@ import { RemoveChecklistItem } from './../../shared/interfaces/checklist-item';
         list-style-type: none;
         margin-bottom: 1rem;
         padding: 1rem;
-
-        button {
-          margin-left: 1rem;
-        }
-
-        div {
-          display: flex;
-        }
       }
   `,
 })

@@ -13,7 +13,9 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
   template: `
     <header>
       <h1>Quicklists</h1>
-      <button (click)="checklistBeingEdited.set({})">Add checklist</button>
+      <button (click)="checklistBeingEdited.set({})" class="btn-green">
+        Add checklist
+      </button>
     </header>
 
     <section>
@@ -47,23 +49,23 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
       </ng-template>
     </app-modal>
   `,
-  styles: `ul {
-        padding: 0;
-        margin: 0;
-      }
-      li {
-        font-size: 1.5em;
-        display: flex;
-        justify-content: space-between;
-        background: var(--color-light);
-        list-style-type: none;
-        margin-bottom: 1rem;
-        padding: 1rem;
-
-        button {
-          margin-left: 1rem;
-        }
-      }`,
+  styles: `
+  h2 {
+    padding-left: 1rem
+  }
+  ul {
+     padding: 0;
+     margin: 0;
+  }
+  li {
+    font-size: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    background: var(--color-light);
+    list-style-type: none;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }`,
 })
 export default class HomeComponent {
   checklistService = inject(ChecklistService);
